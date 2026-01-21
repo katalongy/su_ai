@@ -1,57 +1,114 @@
-# React + TypeScript + Vite
+# su_ai - 开发者工具集合
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+这是一个为开发者和技术人员打造的小工具集合网站，提供简洁高效的在线工具服务，帮助开发者快速处理日常开发中的格式化和生成需求。
 
-Currently, two official plugins are available:
+## ✨ 核心功能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+本项目目前包含以下三个核心工具：
 
-## Expanding the ESLint configuration
+### 1. JSON 格式化工具
+- **格式化/压缩**：支持将混乱的 JSON 数据格式化为易读结构，或压缩为单行。
+- **语法验证**：自动检测 JSON 语法错误。
+- **语法高亮**：提供清晰的代码高亮显示。
+- **一键复制**：方便快捷地复制处理后的结果。
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 2. 二维码生成器
+- **文本转图片**：将输入的文本或链接快速转换为二维码。
+- **自定义设置**：支持调整二维码尺寸（小/中/大）。
+- **图片下载**：支持将生成的二维码保存为 PNG 图片。
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### 3. UUID 生成器
+- **标准生成**：生成符合标准的 UUID。
+- **批量生成**：支持一次性生成多个 UUID。
+- **格式定制**：支持带横线/不带横线、大写/小写等格式选择。
+
+## 🛠️ 技术栈
+
+- **前端框架**: [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- **构建工具**: [Vite](https://vitejs.dev/)
+- **样式方案**: [Tailwind CSS](https://tailwindcss.com/)
+- **路由管理**: [React Router](https://reactrouter.com/)
+- **状态管理**: [Zustand](https://zustand-demo.pmnd.rs/)
+- **图标库**: [Lucide React](https://lucide.dev/)
+- **工具库**: 
+  - `qrcode`: 二维码生成
+  - `uuid`: UUID 生成
+  - `react-syntax-highlighter`: 代码高亮
+
+## 📂 项目结构
+
+```
+su_ai/
+├── public/              # 静态资源文件
+├── src/
+│   ├── assets/          # 项目资源（图片等）
+│   ├── components/      # 公共组件
+│   │   ├── layout/      # 布局组件（Header, Layout等）
+│   │   └── ...
+│   ├── hooks/           # 自定义 Hooks
+│   ├── lib/             # 工具函数
+│   ├── pages/           # 页面组件
+│   │   ├── Home.tsx          # 首页
+│   │   ├── JsonFormatter.tsx # JSON 格式化工具
+│   │   ├── QrGenerator.tsx   # 二维码生成器
+│   │   └── UuidGenerator.tsx # UUID 生成器
+│   ├── App.tsx          # 根组件
+│   ├── main.tsx         # 入口文件
+│   └── index.css        # 全局样式
+├── .trae/               # Trae IDE 相关文档
+├── eslint.config.js     # ESLint 配置
+├── tailwind.config.js   # Tailwind 配置
+├── tsconfig.json        # TypeScript 配置
+├── vite.config.ts       # Vite 配置
+└── package.json         # 项目依赖及脚本
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 快速开始
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 环境要求
+确保你的本地环境已安装 [Node.js](https://nodejs.org/) (推荐 v18+)。
 
-export default tseslint.config({
-  extends: [
-    // other configs...
-    // Enable lint rules for React
-    reactX.configs['recommended-typescript'],
-    // Enable lint rules for React DOM
-    reactDom.configs.recommended,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### 1. 克隆项目
+```bash
+git clone <repository-url>
+cd su_ai
 ```
+
+### 2. 安装依赖
+```bash
+npm install
+```
+
+### 3. 启动开发服务器
+```bash
+npm run dev
+```
+启动后，访问 `http://localhost:5173` 即可预览项目。
+
+### 4. 构建生产版本
+```bash
+npm run build
+```
+构建产物将输出到 `dist` 目录。
+
+### 5. 本地预览构建产物
+```bash
+npm run preview
+```
+
+## 📄 脚本说明
+
+| 命令 | 说明 |
+|------|------|
+| `npm run dev` | 启动开发服务器 |
+| `npm run build` | 执行 TypeScript 检查并构建生产版本 |
+| `npm run lint` | 运行 ESLint 代码检查 |
+| `npm run preview` | 预览构建后的生产版本 |
+| `npm run check` | 仅运行 TypeScript 类型检查 |
+
+## 🤝 贡献指南
+
+欢迎提交 Issue 或 Pull Request 来改进本项目！
+
+---
+Powered by Vite + React + TypeScript
